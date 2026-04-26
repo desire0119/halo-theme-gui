@@ -7,8 +7,22 @@
   <section class="home-hero">
     <h1 class="hero-title">
       <span class="hero-mark">
-        <em>归</em>
-        <small>醉里青山日月亏<br />浮云老<br />照影共执杯</small>
+        <em
+          th:if="${not #strings.isEmpty(theme.config.home.hero_title)}"
+          th:text="${theme.config.home.hero_title}"
+          >归</em
+        >
+        <em th:if="${#strings.isEmpty(theme.config.home.hero_title)}">归</em>
+        <small
+          th:if="${not #strings.isEmpty(theme.config.home.hero_poem)}"
+          th:text="${theme.config.home.hero_poem}"
+          >醉里青山日月亏
+浮云老
+照影共执杯</small
+        >
+        <small th:if="${#strings.isEmpty(theme.config.home.hero_poem)}"
+          >醉里青山日月亏<br />浮云老<br />照影共执杯</small
+        >
       </span>
     </h1>
     <p

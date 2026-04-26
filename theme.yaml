@@ -8,10 +8,10 @@ spec:
     name: EduardoQian
     website: https://eduardoqian.com
   description: 
-  logo: https://www.halo.run/logo
-  homepage: https://github.com/halo-dev/theme-halo-gui#readme
-  repo: https://github.com/halo-dev/theme-halo-gui
-  issues: https://github.com/halo-dev/theme-halo-gui/issues
+  logo: https://image.eduardoqian.com/i/2026/04/26/qpqvej.png
+  homepage: https://github.com/CirillaQL/halo-theme-gui#readme
+  repo: https://github.com/CirillaQL/halo-theme-gui
+  issues: https://github.com/CirillaQL/halo-theme-gui/issues
   settingName: "theme-halo-gui-setting"
   configMapName: "theme-halo-gui-configMap"
   version: 1.0.0

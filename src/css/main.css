@@ -138,7 +138,7 @@ a:hover {
   font-weight: 400;
   line-height: 1.42;
   text-align: center;
-  white-space: nowrap;
+  white-space: pre-line;
 }
 
 .hero-summary {

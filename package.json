@@ -12,6 +12,7 @@
     "@halo-dev/theme-package-cli": "^1.0.1",
     "@halo-dev/vite-plugin-halo-theme": "^1.0.3",
     "@types/node": "18.11.9",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",
     "vite-plus": "latest"
