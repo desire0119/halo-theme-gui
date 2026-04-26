@@ -1,11 +1,47 @@
-name: CD
+name: Release
 
 on:
-  release:
-    types:
-      - published
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
 
 jobs:
+  github-release:
+    name: Build and publish GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build theme package
+        run: pnpm build
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: 归 ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: dist/*.zip
+
   cd:
     # https://github.com/halo-sigs/reusable-workflows?tab=readme-ov-file#theme
     uses: halo-sigs/reusable-workflows/.github/workflows/theme-cd.yaml@v3
