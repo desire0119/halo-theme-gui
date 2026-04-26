@@ -1,0 +1,30 @@
+<li
+  class="post-item"
+  th:classappend="${#strings.isEmpty(post.spec.cover)} ? ' post-item-no-cover'"
+  th:each="post : ${posts.items}"
+>
+  <p class="post-index" th:text="${#numbers.formatInteger(postStat.count, 2)}">01</p>
+  <div class="post-body">
+    <h3 class="post-title">
+      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+    </h3>
+    <p class="post-meta">
+      <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"></time>
+      <span th:if="${not #lists.isEmpty(post.categories)}">
+        &nbsp;·&nbsp;
+        <a
+          th:each="cat : ${post.categories}"
+          th:href="@{${cat.status.permalink}}"
+          th:text="${cat.spec.displayName}"
+          class="category"
+        ></a>
+      </span>
+    </p>
+    <p class="post-excerpt" th:text="${post.status.excerpt}"></p>
+  </div>
+  <figure class="post-cover" th:if="${not #strings.isEmpty(post.spec.cover)}">
+    <a th:href="@{${post.status.permalink}}">
+      <img th:src="@{${post.spec.cover}}" th:alt="${post.spec.title}" loading="lazy" />
+    </a>
+  </figure>
+</li>

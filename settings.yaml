@@ -1,0 +1,26 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-halo-gui-setting
+spec:
+  forms:
+    - group: home
+      label: 首页
+      formSchema:
+        - $formkit: textarea
+          name: hero_summary
+          label: 首页导语
+          help: 显示在首页大标题下方。留空则不显示。
+          value: ""
+        - $formkit: attachment
+          name: background_image
+          label: 首页背景图
+          help: 仅在首页显示。留空时使用主题内置背景图。
+          value: ""
+    - group: styles
+      label: 样式
+      formSchema:
+        - $formkit: color
+          name: background_color
+          label: 背景颜色
+          value: "#f2f2f2"

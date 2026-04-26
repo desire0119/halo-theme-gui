@@ -1,0 +1,21 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-halo-gui
+spec:
+  displayName: 归
+  author:
+    name: EduardoQian
+    website: https://eduardoqian.com
+  description: 
+  logo: https://www.halo.run/logo
+  homepage: https://github.com/halo-dev/theme-halo-gui#readme
+  repo: https://github.com/halo-dev/theme-halo-gui
+  issues: https://github.com/halo-dev/theme-halo-gui/issues
+  settingName: "theme-halo-gui-setting"
+  configMapName: "theme-halo-gui-configMap"
+  version: 1.0.0
+  requires: ">=2.0.0"
+  license:
+    - name: "GPL-3.0"
+      url: "https://github.com/halo-dev/theme-vite-starter/blob/main/LICENSE"

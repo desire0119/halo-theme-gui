@@ -1,0 +1,29 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="${site.title}">Home</title>
+    <script type="module" src="./js/index.ts"></script>
+  </template>
+
+  <section class="home-hero">
+    <h1 class="hero-title">
+      <span class="hero-mark">
+        <em>归</em>
+        <small>醉里青山日月亏<br />浮云老<br />照影共执杯</small>
+      </span>
+    </h1>
+    <p
+      class="hero-summary"
+      th:if="${not #strings.isEmpty(theme.config.home.hero_summary)}"
+      th:text="${theme.config.home.hero_summary}"
+    ></p>
+  </section>
+
+  <section class="home-posts" aria-labelledby="home-posts-title">
+    <p class="section-kicker" id="home-posts-title">00 · 文章</p>
+    <ul class="post-list">
+      <include src="post-card.html"></include>
+    </ul>
+  </section>
+
+  <include src="pagination.html"></include>
+</include>
