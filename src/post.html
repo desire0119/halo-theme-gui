@@ -4,13 +4,12 @@
     <script type="module" src="./js/post.ts"></script>
   </template>
 
-  <article>
+  <article class="article-detail">
     <header class="article-header">
       <h1 class="article-title" th:text="${post.spec.title}"></h1>
       <div class="article-meta">
         <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
-        <span th:if="${not #lists.isEmpty(post.categories)}">
-          &nbsp;·&nbsp;
+        <span class="article-meta-item" th:if="${not #lists.isEmpty(post.categories)}">
           <a
             th:each="cat : ${post.categories}"
             th:href="@{${cat.status.permalink}}"
@@ -18,19 +17,22 @@
             class="category"
           ></a>
         </span>
+        <span class="article-meta-item">
+          阅读量
+          <span th:text="${post.stats?.visit ?: 0}">0</span>
+        </span>
+        <span class="article-meta-item" th:if="${not #lists.isEmpty(post.tags)}">
+          <a
+            th:each="tag : ${post.tags}"
+            th:href="@{${tag.status.permalink}}"
+            th:text="|#${tag.spec.displayName}|"
+            class="post-tag-badge inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow]"
+          ></a>
+        </span>
       </div>
     </header>
 
     <div class="article-content" th:utext="${post.content.content}"></div>
-
-    <div class="article-tags" th:if="${not #lists.isEmpty(post.tags)}">
-      <a
-        th:each="tag : ${post.tags}"
-        th:href="@{${tag.status.permalink}}"
-        th:text="${tag.spec.displayName}"
-        class="tag"
-      ></a>
-    </div>
 
     <nav class="post-nav" th:with="cursor = ${postFinder.cursor(post.metadata.name)}">
       <span>

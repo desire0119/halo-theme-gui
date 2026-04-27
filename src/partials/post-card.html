@@ -9,14 +9,27 @@
       <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
     </h3>
     <p class="post-meta">
-      <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"></time>
-      <span th:if="${not #lists.isEmpty(post.categories)}">
-        &nbsp;·&nbsp;
+      <span class="post-meta-item">
+        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"></time>
+      </span>
+      <span class="post-meta-item" th:if="${not #lists.isEmpty(post.categories)}">
         <a
           th:each="cat : ${post.categories}"
           th:href="@{${cat.status.permalink}}"
           th:text="${cat.spec.displayName}"
           class="category"
+        ></a>
+      </span>
+      <span class="post-meta-item">
+        阅读量
+        <span th:text="${post.stats?.visit ?: 0}">0</span>
+      </span>
+      <span class="post-meta-tags" th:if="${not #lists.isEmpty(post.tags)}">
+        <a
+          th:each="tag : ${post.tags}"
+          th:href="@{${tag.status.permalink}}"
+          th:text="|#${tag.spec.displayName}|"
+          class="post-tag-badge inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow]"
         ></a>
       </span>
     </p>

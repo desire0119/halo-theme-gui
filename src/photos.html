@@ -1,0 +1,55 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|图库 - ${site.title}|">Photos</title>
+  </template>
+
+  <section class="photos-page" th:with="groups = ${photoFinder.groupBy()}">
+    <header class="page-heading">
+      <p>photos</p>
+      <h1>图库</h1>
+    </header>
+
+    <div class="photo-group-list" th:if="${not #lists.isEmpty(groups)}">
+      <section class="photo-group" th:each="group : ${groups}">
+        <header class="photo-group-header">
+          <div>
+            <p
+              class="photo-group-count"
+              th:text="|${#lists.size(group.photos)} photos|"
+            >
+              0 photos
+            </p>
+            <h2 th:text="${group.spec.displayName}">Photo Group</h2>
+          </div>
+        </header>
+
+        <ul class="photo-grid" th:if="${not #lists.isEmpty(group.photos)}">
+          <li class="photo-item" th:each="photo : ${group.photos}">
+            <a
+              class="photo-link"
+              th:href="${photo.spec.url}"
+              th:title="${photo.spec.displayName}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                th:src="${#strings.isEmpty(photo.spec.cover) ? photo.spec.url : photo.spec.cover}"
+                th:alt="${photo.spec.displayName}"
+                loading="lazy"
+              />
+              <span class="photo-caption">
+                <strong th:text="${photo.spec.displayName}">Photo</strong>
+                <small
+                  th:if="${not #strings.isEmpty(photo.spec.description)}"
+                  th:text="${photo.spec.description}"
+                ></small>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="empty-state" th:if="${#lists.isEmpty(groups)}">还没有图片。</p>
+  </section>
+</include>

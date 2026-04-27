@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 *,
 *::before,
 *::after {
@@ -207,8 +209,8 @@ a:hover {
 
 .post-title {
   margin: 0 0 0.35rem;
-  font-family: var(--sans);
-  font-weight: 700;
+  font-family: "KaiTi", "Kaiti SC", "STKaiti", "BiauKai", var(--serif);
+  font-weight: 600;
   font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1.25;
 }
@@ -216,8 +218,32 @@ a:hover {
 .post-meta {
   color: var(--muted);
   font-family: var(--mono);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
   font-size: 0.75rem;
   margin: 0 0 0.75rem;
+}
+
+.post-meta-item,
+.post-meta-tags {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.post-tag-badge {
+  color: var(--accent-dark);
+  background: #efeee9;
+  border-color: #e5ded2;
+}
+
+.post-tag-badge:hover {
+  color: var(--paper-soft);
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
 }
 
 .post-excerpt {
@@ -270,30 +296,55 @@ a:hover {
   font-size: 0.78rem;
 }
 
+.article-detail {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+}
+
 .article-header {
   margin-bottom: 2rem;
 }
 
 .article-title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 1.25rem;
   font-family: var(--serif);
   font-size: clamp(2.4rem, 7vw, 5rem);
   line-height: 1.08;
 }
 
 .article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.85rem;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.875rem;
 }
 
+.article-meta-item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.article-meta .tag,
+.article-meta .category {
+  margin: 0;
+}
+
 .article-content {
   max-width: 100%;
-  line-height: 1.8;
+  font-size: 1.08rem;
+  line-height: 1.92;
 }
 
 .article-content img {
+  display: block;
   max-width: 100%;
+  margin: 1.5rem auto;
 }
 
 .page-heading {
@@ -323,8 +374,13 @@ a:hover {
 }
 
 .moments-page,
-.moment-detail {
+.moment-detail,
+.photos-page {
   max-width: 820px;
+}
+
+.photos-page {
+  max-width: 1040px;
 }
 
 .moment-list {
@@ -397,6 +453,115 @@ a:hover {
   color: var(--accent);
   font-family: var(--mono);
   font-size: 0.75rem;
+}
+
+.photo-group-list {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.photo-group {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--faint);
+}
+
+.photo-group-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.photo-group-header h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.8rem);
+  line-height: 1.12;
+}
+
+.photo-group-count {
+  margin: 0 0 0.2rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-item {
+  min-width: 0;
+}
+
+.photo-link {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--faint);
+  border-radius: 6px;
+  background: var(--paper-soft);
+}
+
+.photo-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.photo-link:hover img {
+  filter: saturate(0.86) contrast(1.05);
+  transform: scale(1.025);
+}
+
+.photo-caption {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 0.15rem;
+  padding: 2.25rem 0.75rem 0.7rem;
+  color: var(--paper-soft);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0));
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.photo-link:hover .photo-caption,
+.photo-link:focus-visible .photo-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-caption strong,
+.photo-caption small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo-caption strong {
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.photo-caption small {
+  color: rgb(255 255 255 / 0.78);
+  font-size: 0.78rem;
 }
 
 .empty-state {
@@ -506,5 +671,21 @@ a:hover {
   .post-cover {
     grid-column: 2;
     margin-top: 4px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .photo-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
   }
 }

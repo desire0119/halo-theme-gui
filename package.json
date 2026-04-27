@@ -11,7 +11,10 @@
   "devDependencies": {
     "@halo-dev/theme-package-cli": "^1.0.1",
     "@halo-dev/vite-plugin-halo-theme": "^1.0.3",
+    "@tailwindcss/vite": "^4.2.4",
     "@types/node": "18.11.9",
+    "@types/react": "^19.2.14",
+    "tailwindcss": "^4.2.4",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",
@@ -26,5 +29,12 @@
       "vite": "npm:@voidzero-dev/vite-plus-core@latest",
       "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
     }
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.5",
+    "tailwind-merge": "^3.5.0"
   }
 }
