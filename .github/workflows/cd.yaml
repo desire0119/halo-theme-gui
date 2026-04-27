@@ -9,8 +9,8 @@ permissions:
   contents: write
 
 jobs:
-  github-release:
-    name: Build and publish GitHub Release
+  release:
+    name: Build and publish release
     runs-on: ubuntu-latest
 
     steps:
@@ -33,6 +33,7 @@ jobs:
         run: pnpm build
 
       - name: Publish GitHub Release
+        id: github_release
         uses: softprops/action-gh-release@v2
         with:
           name: 归 ${{ github.ref_name }}
@@ -40,16 +41,11 @@ jobs:
           generate_release_notes: true
           files: dist/*.zip
 
-  cd:
-    # https://github.com/halo-sigs/reusable-workflows?tab=readme-ov-file#theme
-    uses: halo-sigs/reusable-workflows/.github/workflows/theme-cd.yaml@v3
-    secrets:
-      halo-pat: ${{ secrets.HALO_PAT }}
-    permissions:
-      contents: write
-    with:
-      # if you have permission to release to appstore, please set this to false and set the app-id
-      skip-appstore-release: false
-      app-id: app-qgiolczl
-      pnpm-version: 10
-      node-version: 24
+      - name: Publish App Store Release
+        uses: halo-sigs/app-store-release-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          app-id: app-qgiolczl
+          release-id: ${{ steps.github_release.outputs.id }}
+          assets-dir: dist
+          halo-pat: ${{ secrets.HALO_PAT }}
