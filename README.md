@@ -4,7 +4,7 @@
 
 预览地址：[eduardoqian.com](https://eduardoqian.com)
 
-![主题预览](./ScreenShot_2026-04-26_103350_427.png)
+![主题预览](./demo.png)
 
 ## 设计思路
 
