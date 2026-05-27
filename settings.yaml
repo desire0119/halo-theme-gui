@@ -16,7 +16,7 @@ spec:
           name: hero_poem
           label: 首页诗词
           help: 显示在首页题字下方，支持换行。留空时显示主题默认诗词。
-          value: "醉里青山日月亏\n浮云老\n照影共执杯"
+          value: "花径不曾缘客扫\n蓬门今始为君开"
         - $formkit: textarea
           name: hero_summary
           label: 首页导语

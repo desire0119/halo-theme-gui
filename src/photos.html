@@ -13,10 +13,7 @@
       <section class="photo-group" th:each="group : ${groups}">
         <header class="photo-group-header">
           <div>
-            <p
-              class="photo-group-count"
-              th:text="|${#lists.size(group.photos)} photos|"
-            >
+            <p class="photo-group-count" th:text="|${#lists.size(group.photos)} photos|">
               0 photos
             </p>
             <h2 th:text="${group.spec.displayName}">Photo Group</h2>

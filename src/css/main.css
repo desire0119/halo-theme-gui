@@ -13,20 +13,21 @@
 }
 
 :root {
-  --paper: #f5f5f5;
-  --paper-soft: #fafafa;
-  --ink: #111111;
-  --muted: #6d6b66;
-  --faint: #dedbd3;
-  --accent: #d33f4f;
-  --accent-dark: #aa2638;
+  --paper: #faf9f5;
+  --paper-soft: #fdfcf7;
+  --ink: #191814;
+  --muted: #7a736a;
+  --faint: #e8e2d5;
+  --accent: #cc785c;
+  --accent-dark: #a85b41;
   --mono:
-    "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    "Geist Mono", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --serif:
-    "Noto Serif CJK SC", "Songti SC", "Source Han Serif SC", "Times New Roman", serif;
+    "Source Serif 4", "Tiempos Text", "Noto Serif SC", "Noto Serif CJK SC", "Songti SC",
+    "Source Han Serif SC", "Times New Roman", serif;
   --sans:
-    Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system,
-    sans-serif;
+    "Geist", Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui,
+    -apple-system, sans-serif;
 }
 
 html {
@@ -81,11 +82,21 @@ a:hover {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 18px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  text-transform: lowercase;
+  gap: 24px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 0.975rem;
+  font-weight: 500;
+}
+
+.site-nav a {
+  opacity: 0.78;
+  transition: opacity 0.18s;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+  color: var(--accent-dark);
 }
 
 .site-main {
@@ -109,7 +120,7 @@ a:hover {
   align-items: flex-end;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(4.8rem, 10vw, 9.6rem);
+  font-size: clamp(3.35rem, 7vw, 6.7rem);
   font-weight: 800;
   line-height: 0.88;
   letter-spacing: 0;
@@ -125,9 +136,9 @@ a:hover {
 .hero-mark em {
   color: var(--accent);
   font-style: normal;
-  font-family: "Shanhai Jiangnan", "STXingkai", "Xingkai SC", "KaiTi", "Kaiti SC", serif;
+  font-family: var(--serif);
   font-size: 0.86em;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 0.82;
   transform: translateY(-0.04em);
   transform-origin: center;
@@ -135,7 +146,7 @@ a:hover {
 
 .hero-mark small {
   color: var(--accent);
-  font-family: "Shanhai Jiangnan", "STXingkai", "Xingkai SC", "KaiTi", "Kaiti SC", serif;
+  font-family: var(--serif);
   font-size: clamp(1rem, 1.8vw, 1.45rem);
   font-weight: 400;
   line-height: 1.42;
@@ -209,7 +220,7 @@ a:hover {
 
 .post-title {
   margin: 0 0 0.35rem;
-  font-family: "KaiTi", "Kaiti SC", "STKaiti", "BiauKai", var(--serif);
+  font-family: var(--serif);
   font-weight: 600;
   font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1.25;
@@ -802,33 +813,51 @@ a:hover {
   }
 
   .site-main {
-    padding: 46px 0 64px;
+    padding: 32px 0 56px;
+  }
+
+  .site-main-home {
+    background-size: 100% auto;
+    background-position: center top;
   }
 
   .home-hero {
-    padding-bottom: 48px;
+    padding: 32px 16px;
+    min-height: 52vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-title {
+    align-items: center;
+    text-align: center;
+    font-size: clamp(2.5rem, 14vw, 5rem);
   }
 
   .hero-summary {
-    margin-top: 22px;
+    margin-top: 20px;
+    text-align: center;
   }
 
   .hero-mark {
-    align-items: flex-start;
+    align-items: center;
     transform: none;
   }
 
   .hero-mark small {
-    text-align: left;
+    text-align: center;
   }
 
   .home-posts {
-    padding-top: 44px;
+    padding-top: 32px;
   }
 
   .post-item {
     grid-template-columns: 38px minmax(0, 1fr);
     gap: 14px;
+    padding: 18px 0;
   }
 
   .post-cover {
